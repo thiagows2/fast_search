@@ -9,10 +9,10 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(`https://jsonmock.hackerrank.com/api/football_matches?team1=${query}`);
-      console.log(res.data.data)
+      const res = await axios.get(`http://localhost:3000/name_statistics?name=${query}`);
+      console.log(res.data)
       console.log(query)
-      setData(res.data.data);
+      setData(res.data);
     };
     if (query.length === 0 || query.length > 1) fetchData();
   }, [query]);
