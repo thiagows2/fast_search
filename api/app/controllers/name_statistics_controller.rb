@@ -2,12 +2,8 @@
 
 class NameStatisticsController < ActionController::Base
   def index
-    response = if params[:name]
-      NameStatistic.where('LOWER(name) LIKE ?', "%#{params[:name].downcase}%")
-    else
-      NameStatistic.first(500).sample(50)
-    end
+    res = NameStatistic.where('LOWER(name) LIKE ?', "%#{params[:name].downcase}%").first(20)
 
-    render json: response, status: :ok
+    render json: res, status: :ok
   end
 end
